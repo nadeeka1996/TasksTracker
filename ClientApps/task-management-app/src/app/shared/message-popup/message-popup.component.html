@@ -1,0 +1,29 @@
+<div class="popup-overlay" (click)="close.emit()">
+  <div
+    class="popup-content mat-elevation-z4"
+    [ngClass]="type"
+    (click)="$event.stopPropagation()"
+  >
+    <mat-toolbar
+      [color]="type === 'success' ? 'primary' : 'warn'"
+      class="popup-header"
+    >
+      <span>{{ type === "success" ? "Success" : "Error" }}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="close.emit()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="popup-body">
+      <mat-icon
+        class="popup-icon"
+        [style.color]="type === 'success' ? '#4caf50' : '#d32f2f'"
+      >
+        {{ type === "success" ? "check_circle" : "error" }}
+      </mat-icon>
+
+      <p>{{ message }}</p>
+    </div>
+  </div>
+</div>

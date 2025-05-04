@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TasksManagement.Application\TasksManagement.Application.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,34 @@
+.logout-container {
+  margin: 16px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 4px 12px;
+  gap: 6px;
+  width: 100%;
+}
+
+mat-icon {
+  margin-right: 8px;
+}
+
+.desktop-only {
+  display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.mobile-only {
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+  
+}

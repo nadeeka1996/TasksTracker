@@ -1,0 +1,15 @@
+<!-- Desktop view -->
+<div class="logout-container desktop-only">
+    <button mat-raised-button color="primary" (click)="openLogoutDialog()">
+      Logout
+    </button>
+  </div>
+  
+  <!-- Mobile view -->
+  <div class="logout-container mobile-only">
+    <button class="logout-button" (click)="openLogoutDialog()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </div>
+  

@@ -1,0 +1,90 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  margin: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.searchbar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.searchbar {
+  width: 100%;
+  padding: 12px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.description-cell {
+  max-width: 300px;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+}
+
+.mat-column-title {
+  width: 20%;
+  min-width: 100px;
+}
+.mat-column-description {
+  width: 40%;
+  min-width: 100px;
+}
+.mat-column-status {
+  width: 20%;
+  min-width: 100px;
+}
+.mat-column-actions {
+  width: 20%;
+  min-width: 100px;
+}
+
+.action-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-label {
+  margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+  .action-label {
+    display: none;
+  }
+}

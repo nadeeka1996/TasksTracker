@@ -1,0 +1,39 @@
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: #CCC;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  .desktop-only {
+    display: flex;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  
+  .mobile-only {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  

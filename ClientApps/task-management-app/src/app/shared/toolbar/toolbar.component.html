@@ -1,0 +1,31 @@
+<mat-toolbar class="toolbar">
+  <span class="title">{{ title }}</span>
+  <span class="spacer"></span>
+
+  <!-- Desktop buttons -->
+  <div class="actions desktop-only">
+    <button
+      *ngIf="showDashboardButton"
+      mat-raised-button
+      color="primary"
+      routerLink="/dashboard"
+    >
+      Dashboard
+    </button>
+    <app-logout></app-logout>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="actions mobile-only">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button *ngIf="showDashboardButton" mat-menu-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <app-logout></app-logout>
+    </mat-menu>
+  </div>
+</mat-toolbar>
