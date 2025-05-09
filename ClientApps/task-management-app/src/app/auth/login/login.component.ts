@@ -54,11 +54,10 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
-        next: (res) => {
-          debugger
+        next: (res) => {     
           this.loginSuccess = true;
           localStorage.setItem('userId', res.value.id);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/tasks']);
         },
         error: () => {
           this.loginFailed = true;

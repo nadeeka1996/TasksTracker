@@ -26,7 +26,6 @@ export class LogoutComponent {
 
     dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        debugger;
         this.logout();
       }
     });

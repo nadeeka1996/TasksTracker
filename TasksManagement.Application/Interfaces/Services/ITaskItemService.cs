@@ -6,7 +6,7 @@ namespace TasksManagement.Application.Interfaces.Services;
 
 public interface ITaskItemService
 {
-    Task<Result<IEnumerable<TaskItemGetResponse>>> GetAsync();
+    Task<Result<IEnumerable<TaskItemGetResponse>>> GetAsync(int pageNumber);
     Task<Result<TaskItemGetResponse>> GetAsync(Guid id);
     Task<Result<Guid>> CreateAsync(TaskItemCreateRequest request);
     Task<Result> UpdateAsync(Guid id, TaskItemUpdateRequest request);

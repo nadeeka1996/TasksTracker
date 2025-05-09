@@ -17,11 +17,13 @@ internal sealed class TaskItemService(
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     private readonly ICurrentUser _currentUser = currentUser;
 
-    public async Task<Result<IEnumerable<TaskItemGetResponse>>> GetAsync()
+    public async Task<Result<IEnumerable<TaskItemGetResponse>>> GetAsync(int pageNumber)
     {
         var taskItems = await _unitOfWork.TaskItemRepository.GetAsync(
-            filter: task => task.UserId == _currentUser.Id,
-            selector: task => TaskItemGetResponse.Map(task)
+            filter: task => task.UserId == _currentUser.Id && task.Status != TaskItemStatus.Completed,
+            selector: task => TaskItemGetResponse.Map(task),
+            skip:((pageNumber -1)*5),
+            take: 5
         );
 
         return Result<IEnumerable<TaskItemGetResponse>>.Success(taskItems);
@@ -46,9 +48,6 @@ internal sealed class TaskItemService(
     {
         var taskItem = TaskItem.Create(request.Title, request.Description, request.Status, _currentUser.Id);
         await _unitOfWork.TaskItemRepository.AddAsync(taskItem);
-
-        var history = TaskItemHistory.Create(taskItem.Id, taskItem, taskItem.Title, taskItem.Description, taskItem.Status, _currentUser.Id);
-        await _unitOfWork.TaskItemHistoryRepository.AddAsync(history);
 
         await _unitOfWork.SaveChangesAsync();
         return Result<Guid>.Success(taskItem.Id);

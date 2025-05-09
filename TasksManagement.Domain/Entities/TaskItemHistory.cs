@@ -32,6 +32,6 @@ public sealed class TaskItemHistory : IEntity, ISoftDeletable
             Description = description,
             Status = status,
             ChangedBy = changedBy,
-            IsDeleted = true
+            IsDeleted = false
         };
 }

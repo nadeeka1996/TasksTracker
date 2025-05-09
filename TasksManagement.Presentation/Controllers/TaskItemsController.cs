@@ -14,9 +14,9 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     private readonly ITaskItemService _service = service;
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TaskItemGetResponse>>> GetAll()
+    public async Task<ActionResult<IEnumerable<TaskItemGetResponse>>> GetAll(int pageNumber)
     {
-        var result = await _service.GetAsync();
+        var result = await _service.GetAsync(pageNumber);
         return Ok(result);
     }
 
@@ -24,7 +24,7 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     public async Task<ActionResult<TaskItemGetResponse>> GetById(Guid id)
     {
         var result = await _service.GetAsync(id);
-        if (result.IsFailure) 
+        if (result.IsFailure)
             return NotFound(result);
 
         return Ok(result);
@@ -33,8 +33,12 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(TaskItemCreateRequest request)
     {
+        var modelState = request.Validate();
+        if (!modelState.IsSuccess)
+            return BadRequest(modelState);
+
         var result = await _service.CreateAsync(request);
-        if (result.IsFailure) 
+        if (result.IsFailure)
             return BadRequest(result);
 
         return CreatedAtAction(nameof(GetById), new { id = result.Value }, null);
@@ -43,8 +47,12 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, TaskItemUpdateRequest request)
     {
+        var modelState = request.Validate();
+        if (!modelState.IsSuccess)
+            return BadRequest(modelState);
+
         var result = await _service.UpdateAsync(id, request);
-        if (result.IsFailure) 
+        if (result.IsFailure)
             return NotFound(result);
 
         return NoContent();
@@ -54,7 +62,7 @@ public class TaskItemsController(ITaskItemService service) : ControllerBase
     public async Task<IActionResult> Delete(Guid id)
     {
         var result = await _service.DeleteAsync(id);
-        if (result.IsFailure) 
+        if (result.IsFailure)
             return NotFound(result);
 
         return NoContent();

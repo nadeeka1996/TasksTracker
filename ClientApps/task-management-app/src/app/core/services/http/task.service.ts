@@ -9,8 +9,10 @@ export class TaskService {
   private readonly apiUrl = `${environment.apiUrl}/tasks`;
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<any> {
-    return this.http.get<TaskItem[]>(this.apiUrl);
+  getTasks(pageNumber:number): Observable<any> {
+    return this.http.get<TaskItem[]>(`${this.apiUrl}/`, {
+      params: { pageNumber: pageNumber.toString() }
+    });
   }
 
   getTask(id: string): Observable<TaskItem> {

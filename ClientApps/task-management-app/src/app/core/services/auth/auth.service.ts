@@ -13,7 +13,6 @@ export class AuthService extends BaseService {
   }
 
   login(username: string, password: string): Observable<any> {
-    debugger;
     return this.http
       .post(`${this.apiUrl}/auth/login`, {
         email: username,
@@ -21,7 +20,6 @@ export class AuthService extends BaseService {
       })
       .pipe(
         tap((res: any) => {
-          debugger;
           localStorage.setItem('userId', res.userId);
         })
       );

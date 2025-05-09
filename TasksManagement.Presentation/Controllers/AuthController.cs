@@ -13,8 +13,9 @@ public class AuthController(IUserService userService) : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+        var modelState = request.Validate();
+        if (!modelState.IsSuccess)
+            return BadRequest(modelState);
 
         var result = await _userService.AuthenticateAsync(request.Email, request.Password);
         if (result.IsFailure)
@@ -26,8 +27,9 @@ public class AuthController(IUserService userService) : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+        var modelState = request.Validate();
+        if (!modelState.IsSuccess)
+            return BadRequest(modelState);
 
         var result = await _userService.RegisterAsync(request.Name, request.Email, request.Password);
         if (result.IsFailure)

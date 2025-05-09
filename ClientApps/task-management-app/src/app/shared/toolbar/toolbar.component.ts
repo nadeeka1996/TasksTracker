@@ -3,7 +3,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LogoutComponent } from '../../auth/logout/logout.component';
 import { MatDividerModule } from '@angular/material/divider'; 
@@ -17,7 +16,6 @@ import { MatDividerModule } from '@angular/material/divider';
     MatIconModule,
     MatMenuModule,
     LogoutComponent,
-    NgIf,
     RouterModule,
     MatDividerModule
   ],
@@ -26,5 +24,4 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class ToolbarComponent {
   @Input() title = '';
-  @Input() showDashboardButton = false;
 }
