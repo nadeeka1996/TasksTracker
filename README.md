@@ -39,8 +39,8 @@ A full-stack task management application built with **.NET 8 (Web API)** and **A
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/nadeeka1996/TasksManagement.git
-cd TasksManagement
+git clone https://github.com/nadeeka1996/TasksTracker
+cd TasksTracker
 ```
 
 ---
